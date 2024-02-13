@@ -1,9 +1,18 @@
 import { useState } from "react";
-import { RiArrowRightSLine } from "react-icons/ri";
+import { RiArrowRightSLine, RiArrowDownSLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 export default function Index() {
-  const [show, setShow] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+  };
 
   return (
     <div className="flex flex-col h-screen justify-between m-4">
@@ -47,17 +56,68 @@ export default function Index() {
         <div className="flex flex-col my-2">
           <h1 className="font-bold text-black">Pembelian Paket</h1>
           <div className="flex flex-row w-full gap-2 justify-around">
-            <div className="flex flex-col bg-[#F1F1F1] border p-2 rounded-lg justify-center items-center w-full">
-              <h1 className="font-bold text-black">Rp 20.000</h1>
-              <p className="text-gray-500 text-sm">1 Jam</p>
+            <div
+              className={`flex flex-col bg-[#F1F1F1] border p-2 rounded-lg justify-center items-center w-full ${
+                selectedItem === "1 Jam" ? "selected" : ""
+              }`}
+              onClick={() => handleItemClick("1 Jam")}
+            >
+              <h1
+                className={`font-bold ${
+                  selectedItem === "1 Jam" ? "text-red-500" : "text-black"
+                }`}
+              >
+                Rp 20.000
+              </h1>
+              <p
+                className={`text-gray-500 text-sm ${
+                  selectedItem === "1 Jam" ? "text-red-500" : ""
+                }`}
+              >
+                1 Jam
+              </p>
             </div>
-            <div className="flex flex-col bg-[#F1F1F1] border p-2 rounded-lg justify-center items-center w-full">
-              <h1 className="font-bold text-black">Rp 20.000</h1>
-              <p className="text-gray-500 text-sm">2 Jam</p>
+            <div
+              className={`flex flex-col bg-[#F1F1F1] border p-2 rounded-lg justify-center items-center w-full ${
+                selectedItem === "2 Jam" ? "selected" : ""
+              }`}
+              onClick={() => handleItemClick("2 Jam")}
+            >
+              <h1
+                className={`font-bold ${
+                  selectedItem === "2 Jam" ? "text-red-500" : "text-black"
+                }`}
+              >
+                Rp 20.000
+              </h1>
+              <p
+                className={`text-gray-500 text-sm ${
+                  selectedItem === "2 Jam" ? "text-red-500" : ""
+                }`}
+              >
+                2 Jam
+              </p>
             </div>
-            <div className="flex flex-col bg-[#F1F1F1] border p-2 rounded-lg justify-center items-center w-full">
-              <h1 className="font-bold text-black">Rp 20.000</h1>
-              <p className="text-gray-500 text-sm">3 Jam</p>
+            <div
+              className={`flex flex-col bg-[#F1F1F1] border p-2 rounded-lg justify-center items-center w-full ${
+                selectedItem === "3 Jam" ? "selected" : ""
+              }`}
+              onClick={() => handleItemClick("3 Jam")}
+            >
+              <h1
+                className={`font-bold ${
+                  selectedItem === "3 Jam" ? "text-red-500" : "text-black"
+                }`}
+              >
+                Rp 20.000
+              </h1>
+              <p
+                className={`text-gray-500 text-sm ${
+                  selectedItem === "3 Jam" ? "text-red-500" : ""
+                }`}
+              >
+                3 Jam
+              </p>
             </div>
           </div>
         </div>
@@ -68,14 +128,33 @@ export default function Index() {
             id="dropdownHoverButton"
             data-dropdown-toggle="dropdownHover"
             data-dropdown-trigger="hover"
-            class="flex flex-row bg-[#F1F1F1] p-4 justify-between items-center rounded-md"
+            class="flex flex-col bg-[#F1F1F1] p-4 rounded-md"
             type="button"
+            onClick={toggleDropdown}
           >
-            <div className="flex flex-row items-center gap-2">
-              <img src="src/assets/image/gopay.svg" alt="img" />
-              Gopay
+            <div className="flex flex-row gap-2 items-center justify-between">
+              <div className="flex flex-row items-center gap-2">
+                <img src="src/assets/image/gopay.svg" alt="img" />
+                Gopay
+              </div>
+              {isDropdownOpen ? (
+                <RiArrowDownSLine color="red" size={32} />
+              ) : (
+                <RiArrowRightSLine color="red" size={32} />
+              )}
             </div>
-            <RiArrowRightSLine color="red" size={32} />
+            {isDropdownOpen && (
+              <div id="dropdownHover" data-dropdown-content className="">
+                <div class="flex flex-row gap-2 items-center my-2">
+                  <img src="src/assets/image/gopay.svg" alt="img" />
+                  <h1>Gopay</h1>
+                </div>
+                <div class="flex flex-row gap-2 items-center my-2">
+                  <img src="src/assets/image/ovo.svg" alt="img" />
+                  <h1>Ovo</h1>
+                </div>
+              </div>
+            )}
           </button>
         </div>
       </div>
