@@ -46,16 +46,16 @@ export default function Index() {
 
         <div className="flex flex-col my-2">
           <h1 className="font-bold text-black">Pembelian Paket</h1>
-          <div className="flex flex-row w-full justify-around">
-            <div className="flex flex-col bg-[#F1F1F1] border p-2 rounded-lg justify-center items-center">
+          <div className="flex flex-row w-full gap-2 justify-around">
+            <div className="flex flex-col bg-[#F1F1F1] border p-2 rounded-lg justify-center items-center w-full">
               <h1 className="font-bold text-black">Rp 20.000</h1>
               <p className="text-gray-500 text-sm">1 Jam</p>
             </div>
-            <div className="flex flex-col bg-[#F1F1F1] border p-2 rounded-lg justify-center items-center">
+            <div className="flex flex-col bg-[#F1F1F1] border p-2 rounded-lg justify-center items-center w-full">
               <h1 className="font-bold text-black">Rp 20.000</h1>
               <p className="text-gray-500 text-sm">2 Jam</p>
             </div>
-            <div className="flex flex-col bg-[#F1F1F1] border p-2 rounded-lg justify-center items-center">
+            <div className="flex flex-col bg-[#F1F1F1] border p-2 rounded-lg justify-center items-center w-full">
               <h1 className="font-bold text-black">Rp 20.000</h1>
               <p className="text-gray-500 text-sm">3 Jam</p>
             </div>
